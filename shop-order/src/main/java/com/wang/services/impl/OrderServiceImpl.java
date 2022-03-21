@@ -1,10 +1,11 @@
 package com.wang.services.impl;
 
+import com.wang.common.pojo.Order;
 import com.wang.dao.OrderDao;
-import com.wang.pojo.Order;
 import com.wang.services.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author wangguangpeng
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
+    @Resource
     private OrderDao OrderDao;
     @Override
     public void save(Order order) {

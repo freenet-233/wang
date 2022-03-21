@@ -1,6 +1,6 @@
 package com.wang.services;
 
-import com.wang.pojo.Product;
+import com.wang.common.pojo.Product;
 
 /**
  * @author wangguangpeng
