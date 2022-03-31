@@ -20,15 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * @Project: wang
- * @Package: com.wang.common
- * <p>
  * @Author: Robin Wang
- * @Date: 2022/3/20
- * @Time: 21:30
- * @Describe:
- * <p>
- * Created with IntelliJ IDEA
  */
 
 @Aspect
