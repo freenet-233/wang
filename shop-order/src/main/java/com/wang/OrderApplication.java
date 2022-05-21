@@ -22,7 +22,7 @@ public class OrderApplication {
 
     @Bean
 //    @LoadBalanced
-    public RestTemplate getRTTemplate(){
+    public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
 }

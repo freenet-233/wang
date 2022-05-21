@@ -3,19 +3,21 @@ package com.wang.controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wang.common.annotation.Log;
+import com.wang.common.domin.ResponseMapBuilder;
 import com.wang.common.pojo.Order;
 import com.wang.common.pojo.Product;
 import com.wang.common.pojo.User;
+import com.wang.common.util.SynchronizedByKey;
 import com.wang.server.ProductService;
 import com.wang.services.OrderService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 
@@ -83,5 +85,33 @@ public class OrderController {
     @GetMapping("error")
     public User errorIndex() throws Exception {
         throw new Exception("访问了错误的首页");
+    }
+
+
+
+    @Autowired
+    private SynchronizedByKey synchronizedByKey;
+    /**
+     * 同步锁测试
+     * @param orderId
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping(value = "/process/{orderId}")
+    @ResponseBody
+    public Map<String, Object> process(@PathVariable("orderId") String orderId) throws InterruptedException {
+
+        synchronizedByKey.exec(orderId, () -> {
+            log.debug("[{}]开始", orderId);
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            log.debug("[{}]结束", orderId);
+        });
+
+
+        return ResponseMapBuilder.createSuccessResponseMap().newBuilder();
     }
 }
