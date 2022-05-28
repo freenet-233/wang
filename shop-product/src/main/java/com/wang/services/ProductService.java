@@ -8,7 +8,7 @@ import com.wang.common.pojo.Product;
 public interface ProductService {
 
     /**
-     *
+     * 根据id查询商品
      * @param id
      * @return
      */
