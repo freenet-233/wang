@@ -79,41 +79,13 @@
                 <artifactId>springdoc-openapi-security</artifactId>
                 <version>${springdoc.version}</version>
             </dependency>
-            <!--fastjson 版本-->
+            <!-- fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-            <!-- excel 导入导出 -->
-            <dependency>
-                <groupId>com.pig4cloud.excel</groupId>
-                <artifactId>excel-spring-boot-starter</artifactId>
-                <version>${excel.version}</version>
-            </dependency>
-            <!--  阿里云短信下发 -->
-            <dependency>
-                <groupId>io.springboot.sms</groupId>
-                <artifactId>aliyun-sms-spring-boot-starter</artifactId>
-                <version>${sms.version}</version>
-            </dependency>
-            <!--oss-->
-            <dependency>
-                <groupId>com.pig4cloud.plugin</groupId>
-                <artifactId>oss-spring-boot-starter</artifactId>
-                <version>${oss.version}</version>
-            </dependency>
-            <!--  seata kryo 序列化-->
-            <dependency>
-                <groupId>io.seata</groupId>
-                <artifactId>seata-serializer-kryo</artifactId>
-                <version>${seata.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ow2.asm</groupId>
-                <artifactId>asm</artifactId>
-                <version>${asm.version}</version>
-            </dependency>
+
             <!--orm 相关-->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -135,13 +107,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
-                <!--<exclusions>
-                    &lt;!&ndash;排除tomcat依赖&ndash;&gt;
+                <exclusions>
+                    <!--排除tomcat依赖-->
                     <exclusion>
                         <artifactId>spring-boot-starter-tomcat</artifactId>
                         <groupId>org.springframework.boot</groupId>
                     </exclusion>
-                </exclusions>-->
+                </exclusions>
             </dependency>
             <!--  指定 log4j 版本-->
             <dependency>

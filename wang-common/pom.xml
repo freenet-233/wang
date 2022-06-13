@@ -11,7 +11,7 @@
     <artifactId>wang-common</artifactId>
     <packaging>pom</packaging>
     <name>wang-common</name>
-    <description>公共模块</description>
+    <description>common module</description>
 
     <modules>
         <module>common-bom</module>
