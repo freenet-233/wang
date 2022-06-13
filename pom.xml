@@ -7,7 +7,7 @@
         <module>wang-user</module>
         <module>wang-product</module>
         <module>wang-order</module>
-        <module>generator-code2</module>
+        <module>code-generator</module>
     </modules>
 
     <groupId>com.wang</groupId>
