@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>shop-common</module>
-        <module>shop-user</module>
-        <module>shop-product</module>
-        <module>shop-order</module>
+        <module>wang-common</module>
+        <module>wang-user</module>
+        <module>wang-product</module>
+        <module>wang-order</module>
         <module>generator-code2</module>
     </modules>
 
@@ -87,7 +87,7 @@
             <!--wang公共依赖-->
             <dependency>
                 <groupId>com.wang</groupId>
-                <artifactId>shop-common-bom</artifactId>
+                <artifactId>common-bom</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
