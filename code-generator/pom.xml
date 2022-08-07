@@ -18,7 +18,7 @@
         <mybatis-plus-extension.version>3.5.1</mybatis-plus-extension.version>
         <mybatis-plus-join.version>1.2.4</mybatis-plus-join.version>
         <druid-spring-boot-starter.version>1.2.9</druid-spring-boot-starter.version>
-        <fastjson.version>2.0.4</fastjson.version>
+        <fastjson.version>2.0.10</fastjson.version>
     </properties>
 
 
