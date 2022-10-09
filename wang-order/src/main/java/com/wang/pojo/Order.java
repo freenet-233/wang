@@ -1,7 +1,6 @@
-package com.wang.common.pojo;
+package com.wang.pojo;
 
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,17 +10,25 @@ import javax.persistence.Id;
 /**
  * @author wangguangpeng
  */
-@Entity(name = "shop_user")
+@Entity(name = "shop_order")
 @Data
-public class User {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer uuid;
+    private Long oid;
+
+    private Integer uid;
 
     private String username;
 
-    private String password;
+    private Integer pid;
 
-    private String telephone;
+    private String pname;
+
+    private Double pprice;
+
+    private Integer number;
+
+
 }

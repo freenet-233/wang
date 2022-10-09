@@ -3,8 +3,6 @@ package com.wang.controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wang.common.annotation.Log;
-import com.wang.common.domin.ResponseMapBuilder;
-import com.wang.common.pojo.Order;
 import com.wang.common.pojo.Product;
 import com.wang.common.pojo.User;
 import com.wang.common.util.SynchronizedByKey;
@@ -15,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 

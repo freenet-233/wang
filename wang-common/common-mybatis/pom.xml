@@ -5,7 +5,7 @@
     <parent>
         <artifactId>wang-common</artifactId>
         <groupId>com.wang</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>common-mybatis</artifactId>
@@ -27,10 +27,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations</artifactId>
         </dependency>
         <!--server-api-->
         <dependency>
