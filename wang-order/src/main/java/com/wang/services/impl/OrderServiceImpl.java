@@ -1,6 +1,7 @@
 package com.wang.services.impl;
 
 import com.wang.dao.OrderDao;
+import com.wang.pojo.Order;
 import com.wang.services.OrderService;
 import org.springframework.stereotype.Service;
 

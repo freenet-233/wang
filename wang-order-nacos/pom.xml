@@ -8,16 +8,25 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>wang-user</artifactId>
-    <name>wang-user</name>
-    <packaging>jar</packaging>
+    <artifactId>wang-order-nacos</artifactId>
+    <name>wang-order-nacos</name>
 
     <dependencies>
         <dependency>
-            <groupId>com.wang</groupId>
-            <artifactId>common-core</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+
+
+
+
+
+    </dependencies>
 
 </project>

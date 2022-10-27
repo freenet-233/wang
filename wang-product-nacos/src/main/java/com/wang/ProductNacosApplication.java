@@ -9,9 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wangguangpeng
  */
 @SpringBootApplication
-//@EnableDiscoveryClient
-public class ProductApplication {
+public class ProductNacosApplication {
     public static void main( String[] args ){
-        SpringApplication.run(ProductApplication.class, args);
+        SpringApplication.run(ProductNacosApplication.class, args);
     }
 }

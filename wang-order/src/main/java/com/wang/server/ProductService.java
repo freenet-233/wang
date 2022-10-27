@@ -1,16 +1,11 @@
 package com.wang.server;
 
 
-import com.wang.common.pojo.Product;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 /**
  * 声明调用的提供者的name
  * @author wangguangpeng
  */
-@FeignClient("service-product")
+//@FeignClient("service-product")
 public interface ProductService {
 
 
@@ -20,6 +15,6 @@ public interface ProductService {
      * @param pid
      * @return
      */
-    @GetMapping(value = "/product/{pid}")
-    Product findByPid(@PathVariable("pid") Integer pid);
+//    @GetMapping(value = "/product/{pid}")
+//    Product findByPid(@PathVariable("pid") Integer pid);
 }

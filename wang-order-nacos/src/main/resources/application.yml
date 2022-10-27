@@ -1,0 +1,19 @@
+server:
+  port: 8020
+
+spring:
+  application:
+    name: wang-order-nacos
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
+#    sentinel:
+#      transport:
+#        port: 9021
+#        dashboard: localhost:8080
+
+

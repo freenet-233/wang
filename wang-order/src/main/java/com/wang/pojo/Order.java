@@ -2,17 +2,19 @@ package com.wang.pojo;
 
 import lombok.Data;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * @author wangguangpeng
  */
 @Entity(name = "shop_order")
 @Data
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
