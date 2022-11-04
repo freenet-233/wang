@@ -6,7 +6,7 @@ spring:
     name: wang-product-nacos
   cloud:
     nacos:
-      server-addr: 127.0.0.1:8848
+      server-addr: 42.193.109.161:8848
       discovery:
         username: nacos
         password: nacos
