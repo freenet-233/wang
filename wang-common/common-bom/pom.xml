@@ -32,6 +32,7 @@
         <sms.version>2.0.2</sms.version>
         <jaxb.version>2.3.5</jaxb.version>
         <sentinel.version>1.8.4</sentinel.version>
+        <spring.aop.version>2.7.4</spring.aop.version>
     </properties>
 
     <dependencyManagement>

@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <!--<module>code-generator</module>-->
+        <module>code-generator</module>
         <module>wang-common</module>
         <module>wang-order</module>
         <module>wang-product</module>

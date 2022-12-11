@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.jboss.logging.NDC;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
@@ -25,8 +28,6 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @Slf4j
 public class LogAspect {
-
-    private static final ThreadLocal<Long> startTimeThreadLocal = new ThreadLocal<>();
 
     @Pointcut("execution(public * com.wang.*.controller..*.*(..))")
     public void log(){
