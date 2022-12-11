@@ -20,7 +20,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <git.commit.plugin>4.9.9</git.commit.plugin>
         <spring.checkstyle.plugin>0.0.29</spring.checkstyle.plugin>
-        <fastjson.version>1.2.78</fastjson.version>
+        <fastjson.version>2.0.20</fastjson.version>
         <springdoc.version>1.6.6</springdoc.version>
         <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <mysql.version>8.0.29</mysql.version>
@@ -54,8 +54,8 @@
             </dependency>
             <!-- fastjson -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
             <!--springdoc -->
