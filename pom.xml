@@ -10,6 +10,7 @@
         <module>wang-product</module>
         <module>wang-order-nacos</module>
         <module>wang-product-nacos</module>
+        <module>wang-webs</module>
     </modules>
 
     <groupId>com.wang</groupId>
@@ -41,9 +42,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
             <version>1.18.24</version>
         </dependency>
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
