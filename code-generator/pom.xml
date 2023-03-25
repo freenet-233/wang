@@ -17,7 +17,7 @@
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <mybatis-plus-extension.version>3.5.1</mybatis-plus-extension.version>
         <mybatis-plus-join.version>1.2.4</mybatis-plus-join.version>
-        <druid-spring-boot-starter.version>1.2.9</druid-spring-boot-starter.version>
+        <druid-spring-boot-starter.version>1.2.16</druid-spring-boot-starter.version>
     </properties>
 
 
@@ -43,6 +43,11 @@
             <groupId>com.github.yulichang</groupId>
             <artifactId>mybatis-plus-join</artifactId>
             <version>${mybatis-plus-join.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
         <dependency>
