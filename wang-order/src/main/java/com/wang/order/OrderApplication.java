@@ -1,4 +1,4 @@
-package com.wang;
+package com.wang.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

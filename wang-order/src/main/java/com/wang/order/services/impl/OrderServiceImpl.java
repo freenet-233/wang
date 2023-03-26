@@ -1,11 +1,11 @@
-package com.wang.services.impl;
+package com.wang.order.services.impl;
 
-import com.wang.dao.OrderDao;
-import com.wang.pojo.Order;
-import com.wang.services.OrderService;
+import com.wang.order.dao.OrderDao;
+import com.wang.order.pojo.Order;
+import com.wang.order.services.OrderService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 /**
  * @author wangguangpeng

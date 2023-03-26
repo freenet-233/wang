@@ -1,7 +1,7 @@
-package com.wang.services;
+package com.wang.order.services;
 
 
-import com.wang.pojo.Order;
+import com.wang.order.pojo.Order;
 
 /**
  * @author wangguangpeng

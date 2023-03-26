@@ -1,25 +1,34 @@
 package com.wang.common.config;
 
-import com.wang.common.util.MessageConverterUtil;
+
+import com.wang.common.exception.ErrorCode;
+import com.wang.common.exception.UncheckedBusinessException;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.core5.ssl.SSLContexts;
+import org.apache.hc.core5.ssl.TrustStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.nio.charset.Charset;
+import javax.net.ssl.SSLContext;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * @author wang
+ */
 @Configuration
 @ConditionalOnProperty(prefix = "http.", value = "readTimeout")
 public class RestTemplateConfig {
@@ -32,98 +41,46 @@ public class RestTemplateConfig {
 
     @Value("${http.readTimeout}")
     private int readTimeout;
-
     @Value("${http.connectTimeout}")
     private int connectTimeout;
 
     @Value("${http.connectionRequestTimeout}")
     private int connectionRequestTimeout;
 
-    @Value("${http.maxConnection}")
-    private int maxConnection;
-
+    private CloseableHttpClient httpClient;
     @Bean
+    @Primary
     public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        ClientHttpRequestFactory factory = clientHttpRequestFactory();
-        restTemplate.setRequestFactory(factory);
-        this.coverConverters(restTemplate);
+        RestTemplate restTemplate = new RestTemplate(getRequestFactory());
+        converter(restTemplate);
         return restTemplate;
     }
-
-    private void coverConverters(RestTemplate restTemplate) {
+    private void converter(RestTemplate restTemplate) {
         List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
-        List<HttpMessageConverter<?>> messageConvertersNew = new ArrayList<>();
-        for (HttpMessageConverter httpMessageConverter : messageConverters) {
-            if (httpMessageConverter instanceof MappingJackson2HttpMessageConverter) {
-                messageConvertersNew.add(MessageConverterUtil.fastJsonHttpMessageConverter());
-            } else {
-                if (httpMessageConverter instanceof StringHttpMessageConverter) {
-                    ((StringHttpMessageConverter) httpMessageConverter).setDefaultCharset(StandardCharsets.UTF_8);
-                }
-                messageConvertersNew.add(httpMessageConverter);
+        for(HttpMessageConverter messageConverter : messageConverters){
+            if(messageConverter instanceof StringHttpMessageConverter){
+                ((StringHttpMessageConverter) messageConverter).setDefaultCharset(StandardCharsets.UTF_8);
             }
+
         }
-        restTemplate.setMessageConverters(messageConvertersNew);
     }
 
-    @Bean(GBK_REST_TEMPLATE)
-    public RestTemplate restTemplateGbk() {
-        RestTemplate restTemplate = new RestTemplate();
-        ClientHttpRequestFactory factory = clientHttpRequestFactory();
-        restTemplate.setRequestFactory(factory);
-        this.coverConvertersForGbk(restTemplate);
-        return restTemplate;
-    }
-
-    private void coverConvertersForGbk(RestTemplate restTemplate) {
-        List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
-        List<HttpMessageConverter<?>> messageConvertersNew = new ArrayList<>();
-        for (HttpMessageConverter httpMessageConverter : messageConverters) {
-            if (httpMessageConverter instanceof MappingJackson2HttpMessageConverter) {
-                messageConvertersNew.add(MessageConverterUtil.fastJsonHttpMessageConverterGbk());
-            } else {
-                if (httpMessageConverter instanceof StringHttpMessageConverter) {
-                    ((StringHttpMessageConverter) httpMessageConverter).setDefaultCharset(Charset.forName("GBK"));
-                }
-                messageConvertersNew.add(httpMessageConverter);
-            }
+    public HttpComponentsClientHttpRequestFactory getRequestFactory(){
+        TrustStrategy trustStrategy = (x509Certificates, s) -> true;
+        try {
+            SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null,trustStrategy).build();
+            SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
+            this.httpClient = HttpClients.custom().setConnectionManager(PoolingHttpClientConnectionManagerBuilder
+                    .create().setSSLSocketFactory(socketFactory).build()).build();
+            HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+            requestFactory.setHttpClient(this.httpClient);
+            requestFactory.setConnectionRequestTimeout(connectionRequestTimeout);
+            requestFactory.setConnectTimeout(connectTimeout);
+            return requestFactory;
+        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
+            throw new UncheckedBusinessException(ErrorCode.ERROR_510, e.getMessage());
         }
-        restTemplate.setMessageConverters(messageConvertersNew);
     }
 
-    private ClientHttpRequestFactory clientHttpRequestFactory() {
-        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-        httpClientBuilder.setMaxConnTotal(maxConnection);
-        httpClientBuilder.setMaxConnPerRoute(maxConnection);
-        httpClientBuilder.setConnectionTimeToLive(5, TimeUnit.SECONDS);
-//        httpClientBuilder.setProxy(new HttpHost("127.0.0.1", 8888));
-        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClientBuilder.build());
-        factory.setReadTimeout(readTimeout);
-        factory.setConnectTimeout(connectTimeout);
-        factory.setConnectionRequestTimeout(connectionRequestTimeout);
-        factory.setBufferRequestBody(false);
-        return factory;
-    }
-
-    @Bean(DEFAULT_HEADER)
-    public HttpHeaders defaultHttpHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
-        headers.add(HttpHeaders.CONNECTION, "close");
-        headers.add(HttpHeaders.CONTENT_ENCODING, "utf-8");
-        return headers;
-    }
-
-    @Bean(GBK_HEADER)
-    public HttpHeaders gbkHttpHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
-        headers.add(HttpHeaders.CONNECTION, "close");
-        headers.add(HttpHeaders.CONTENT_ENCODING, "gbk");
-        return headers;
-    }
 
 }

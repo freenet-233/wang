@@ -1,12 +1,12 @@
 package com.wang.common.config;
 
-import com.winning.mup.core.utils.ConfigConstant;
+import com.wang.common.util.ConfigConstant;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;

@@ -14,7 +14,7 @@
 
     <properties>
         <wang.common.version>${project.version}</wang.common.version>
-        <spring-boot.version>2.7.4</spring-boot.version>
+        <spring-boot.version>3.0.0</spring-boot.version>
         <log4j2.version>2.18.0</log4j2.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -34,6 +34,8 @@
         <sentinel.version>1.8.4</sentinel.version>
         <spring.aop.version>2.7.4</spring.aop.version>
         <commons-pool2-version>2.11.1</commons-pool2-version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <httpclient.version>4.5.14</httpclient.version>
     </properties>
 
     <dependencyManagement>
@@ -89,12 +91,40 @@
                 <artifactId>commons-pool2</artifactId>
                 <version>${commons-pool2-version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+           <!-- <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>-->
             <!--web 模块-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>10.1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-servlet-api</artifactId>
+                <version>10.1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>5.2.1</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

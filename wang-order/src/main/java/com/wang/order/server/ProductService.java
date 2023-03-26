@@ -1,4 +1,4 @@
-package com.wang.server;
+package com.wang.order.server;
 
 
 /**

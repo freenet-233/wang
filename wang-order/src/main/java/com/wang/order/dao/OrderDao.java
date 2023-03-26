@@ -1,6 +1,6 @@
-package com.wang.dao;
+package com.wang.order.dao;
 
-import com.wang.pojo.Order;
+import com.wang.order.pojo.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

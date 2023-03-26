@@ -20,7 +20,7 @@ public class SpringUtil implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         Assert.notNull(applicationContext, "SpringUtil injection ApplicationContext is null");
-        this.applicationContext = applicationContext;
+        SpringUtil.applicationContext = applicationContext;
     }
 
     public static Object getBean(String beanName) {

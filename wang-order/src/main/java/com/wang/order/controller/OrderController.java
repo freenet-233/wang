@@ -1,19 +1,14 @@
-package com.wang.controller;
+package com.wang.order.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.wang.pojo.Order;
-import com.wang.services.OrderService;
+import com.wang.order.services.OrderService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
-import java.util.Map;
 
 
 /**
