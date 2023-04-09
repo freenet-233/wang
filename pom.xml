@@ -3,15 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <modules>
-        <module>code-generator</module>
-        <module>wang-common</module>
-        <module>wang-order</module>
-        <module>wang-product</module>
-        <module>wang-order-nacos</module>
-        <module>wang-product-nacos</module>
-        <module>wang-webs</module>
-    </modules>
+
 
     <groupId>com.wang</groupId>
     <artifactId>wang</artifactId>
@@ -34,6 +26,15 @@
         <lombok.version>1.18.26</lombok.version>
     </properties>
 
+    <modules>
+        <module>code-generator</module>
+        <module>wang-common</module>
+        <module>wang-order</module>
+        <module>wang-product</module>
+        <module>wang-order-nacos</module>
+        <module>wang-product-nacos</module>
+        <module>wang-webs</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
