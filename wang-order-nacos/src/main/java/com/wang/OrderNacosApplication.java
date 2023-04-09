@@ -20,7 +20,6 @@ public class OrderNacosApplication {
     @Bean
     @LoadBalanced
     public RestTemplate getRestTemplate(RestTemplateBuilder builder){
-        RestTemplate restTemplate = builder.build();
-        return restTemplate;
+        return builder.build();
     }
 }
