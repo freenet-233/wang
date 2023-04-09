@@ -9,7 +9,7 @@ spring:
       discovery:
         enabled: true
         # nacos集群服务注册地址
-        server-addr: 192.168.2.189:8999
+#        server-addr: 192.168.2.189:8999
         username: nacos
         password: nacos
         # 命名空间，默认 public,可设置dev,pro等，相同特征的服务分类，先去nacos命名空间创建
@@ -21,7 +21,7 @@ spring:
         # 权重 1-100 数值越大权重越大分配的流量就越大，通常结合权重负载均衡策略
         weight: 100
       config:
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+#        server-addr: ${spring.cloud.nacos.discovery.server-addr}
         username: ${spring.cloud.nacos.discovery.username}
         password: ${spring.cloud.nacos.discovery.password}
         # dataid为yaml的文件扩展名配置方式 ${spring.application.name}.${file‐extension:properties}
