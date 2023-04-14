@@ -1,0 +1,33 @@
+server:
+  port: 8023
+
+spring:
+  application:
+    name: wang-gateway
+  cloud:
+    gateway:
+      metrics:
+        enabled: true   # default value
+      actuator:
+        verbose:
+          enabled: true   # see /actuator/gateway/routes
+#      discovery:
+#        locator:
+#          enabled: true # 让gateway可以发现nacos中的微服务
+
+management:
+  endpoint:
+    gateway:
+      enabled: true       # default value
+  endpoints:
+    web:
+      exposure:
+        include: "*"        # OR include: gateway
+  health:
+    redis:
+      enabled: false      # because redis starter is in pom... change to true to use redis rate limiting
+
+
+
+
+

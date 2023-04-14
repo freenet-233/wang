@@ -34,6 +34,7 @@
         <module>wang-order-nacos</module>
         <module>wang-product-nacos</module>
         <module>wang-webs</module>
+        <module>wang-gateway</module>
     </modules>
 
     <dependencyManagement>
