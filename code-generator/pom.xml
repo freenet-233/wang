@@ -12,14 +12,10 @@
     <name>code-generator</name>
 
     <properties>
-        <mybatis-plus.version>3.5.1</mybatis-plus.version>
-        <mysql.connector.java.version>8.0.32</mysql.connector.java.version>
-        <springfox-swagger.version>2.9.2</springfox-swagger.version>
-        <mybatis-plus-extension.version>3.5.1</mybatis-plus-extension.version>
         <mybatis-plus-join.version>1.4.4</mybatis-plus-join.version>
         <druid-spring-boot-starter.version>1.2.16</druid-spring-boot-starter.version>
+        <mybatis-spring.version>3.0.1</mybatis-spring.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -42,21 +38,18 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>3.0.1</version>
+            <version>${mybatis-spring.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid-spring-boot-starter.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
 </project>
