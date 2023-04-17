@@ -1,0 +1,38 @@
+#################### DEMO 7
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route1
+          uri: https://httpbin.org
+          predicates:
+            - Path=/demo/**
+            - Host=**.example.com
+            - Weight=group1, 5
+          filters:
+            - SetPath=/uuid
+        - id: route2
+          uri: https://httpbin.org
+          predicates:
+            - Path=/demo/{delay}
+            - Host=**.example.com
+            - Weight=group1, 5
+          filters:
+            - SetPath=/drip
+            - AddRequestParameter=duration, 0 # time to drip each byte (seconds)
+            - AddRequestParameter=numbytes, 10
+            - AddRequestParameter=code, 200   # response code
+            - AddRequestParameter=delay, {delay}  # delay before responding (seconds)
+#            - CircuitBreaker=myCircuitBreaker
+            - name: CircuitBreaker
+              args:
+                name: myCircuitBreaker
+                fallbackUri: forward:/api/fallback/id
+
+# Show fallback config code
+
+# Execute multiple times to see alternating uuid and ** responses
+# Execute until weighted routing goes to drip
+# Notice fallback response after default 4 second timeout
+# time http :8080/demo/10 Host:example.com

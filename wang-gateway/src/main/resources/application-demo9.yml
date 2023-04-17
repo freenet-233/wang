@@ -1,0 +1,10 @@
+#################### DEMO 9
+
+# Show Route config code in Java and modification of request/response body
+
+# Test using the command below
+# Notice body is modified to upper case and contained in a "Msg" object
+#   http post https://httpbin.org/post --raw Hello! | grep data
+#     you should see: "data": "Hello!",
+#   http post :8080/post --raw Hello! | grep data
+#     you should see: "data": "{\"msg\":\"HELLO!\"}",
