@@ -10,7 +10,7 @@
     <artifactId>common-core</artifactId>
     <packaging>jar</packaging>
     <name>common-core</name>
-    <description>公共工具类核心包</description>
+    <description>common core for wang</description>
 
     <dependencies>
         <dependency>
