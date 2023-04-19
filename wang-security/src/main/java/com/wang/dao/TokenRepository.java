@@ -3,6 +3,7 @@ package com.wang.dao;
 import com.wang.pojo.token.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public interface TokenRepository extends JpaRepository<Token, Integer> {
         on t.id = u.id
         where u.id = :id and (t.expired = false or t.revoked = false )\s
         """)
-    List<Token> findAllValidTokenByUser(Integer id);
+    List<Token> findAllValidTokenByUser(@Param("id") Integer id);
 
     Optional<Token> findByToken(String token);
 }
