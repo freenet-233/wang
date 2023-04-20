@@ -1,5 +1,6 @@
 package com.wang.pojo.user;
 
+import com.wang.pojo.role.RoleType;
 import com.wang.pojo.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,7 @@ public class User implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleType roleType;
 
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
@@ -40,7 +41,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(roleType.name()));
     }
 
     @Override
