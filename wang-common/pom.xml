@@ -15,7 +15,8 @@
 
     <modules>
         <module>common-bom</module>
-        <module>common-mybatis</module>
         <module>common-core</module>
+        <module>common-mybatis</module>
+        <module>common-security</module>
     </modules>
 </project>
