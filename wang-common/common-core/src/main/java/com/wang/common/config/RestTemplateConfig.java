@@ -43,11 +43,9 @@ public class RestTemplateConfig {
     private int readTimeout;
     @Value("${http.connectTimeout}")
     private int connectTimeout;
-
     @Value("${http.connectionRequestTimeout}")
     private int connectionRequestTimeout;
 
-    private CloseableHttpClient httpClient;
     @Bean
     @Primary
     public RestTemplate restTemplate() {
@@ -57,7 +55,7 @@ public class RestTemplateConfig {
     }
     private void converter(RestTemplate restTemplate) {
         List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
-        for(HttpMessageConverter messageConverter : messageConverters){
+        for(HttpMessageConverter<?> messageConverter : messageConverters){
             if(messageConverter instanceof StringHttpMessageConverter){
                 ((StringHttpMessageConverter) messageConverter).setDefaultCharset(StandardCharsets.UTF_8);
             }
@@ -66,14 +64,15 @@ public class RestTemplateConfig {
     }
 
     public HttpComponentsClientHttpRequestFactory getRequestFactory(){
+        CloseableHttpClient httpClient;
         TrustStrategy trustStrategy = (x509Certificates, s) -> true;
         try {
             SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null,trustStrategy).build();
             SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
-            this.httpClient = HttpClients.custom().setConnectionManager(PoolingHttpClientConnectionManagerBuilder
+            httpClient = HttpClients.custom().setConnectionManager(PoolingHttpClientConnectionManagerBuilder
                     .create().setSSLSocketFactory(socketFactory).build()).build();
             HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-            requestFactory.setHttpClient(this.httpClient);
+            requestFactory.setHttpClient(httpClient);
             requestFactory.setConnectionRequestTimeout(connectionRequestTimeout);
             requestFactory.setConnectTimeout(connectTimeout);
             return requestFactory;
