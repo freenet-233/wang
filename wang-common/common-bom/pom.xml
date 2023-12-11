@@ -13,8 +13,8 @@
 
     <properties>
         <wang.common.version>${project.version}</wang.common.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <mysql.version>8.0.33</mysql.version>
         <hutool.version>5.8.22</hutool.version>
@@ -107,6 +107,8 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 </project>
