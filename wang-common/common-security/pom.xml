@@ -4,7 +4,7 @@
     <parent>
         <artifactId>wang-common</artifactId>
         <groupId>com.wang</groupId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>common-security</artifactId>
     <packaging>war</packaging>

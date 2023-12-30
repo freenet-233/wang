@@ -35,9 +35,6 @@ public class RestTemplateConfig {
 
     public static final String DEFAULT_HEADER = "defaultHeader";
 
-    public static final String GBK_HEADER = "gbkHeader";
-
-    public static final String GBK_REST_TEMPLATE = "restTemplateForGbk";
 
     @Value("${http.readTimeout}")
     private int readTimeout;

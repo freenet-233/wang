@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wang</groupId>
     <artifactId>wang-framework</artifactId>
-    <version>${framework.version}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <description>wang-framework</description>
     <packaging>pom</packaging>
@@ -16,18 +16,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>3.0.2</spring-boot.version>
-        <spring-cloud.version>2022.0.4</spring-cloud.version>
-        <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
-        <framework.version>1.0.0</framework.version>
+        <spring-cloud.version>2022.0.0</spring-cloud.version>
+        <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
     </properties>
 
     <modules>
-        <module>code-generator</module>
         <module>wang-common</module>
-        <module>wang-order</module>
-        <module>wang-product</module>
-        <module>wang-order-nacos</module>
-        <module>wang-product-nacos</module>
+        <module>wang-consumer</module>
+        <module>wang-producer</module>
         <module>wang-gateway</module>
         <module>wang-web</module>
     </modules>
@@ -38,7 +34,7 @@
             <dependency>
                 <groupId>com.wang</groupId>
                 <artifactId>common-bom</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.0-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -119,7 +115,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.0.5</version>
+                <version>3.2.1</version>
                 <configuration>
                     <finalName>${project.build.finalName}</finalName>
                     <layers>
@@ -130,9 +126,27 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
+                        <exclude>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-resources-plugin</artifactId>
+                        </exclude>
                     </excludes>
+
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>dll</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>so</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>dylib</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>

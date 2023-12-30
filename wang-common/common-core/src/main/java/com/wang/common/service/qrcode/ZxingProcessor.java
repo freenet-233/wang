@@ -3,6 +3,7 @@ package com.wang.common.service.qrcode;
 import cn.hutool.extra.qrcode.BufferedImageLuminanceSource;
 import com.google.zxing.*;
 import com.google.zxing.common.HybridBinarizer;
+import com.wang.common.service.QRCodeProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

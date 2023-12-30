@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.wang</groupId>
         <artifactId>wang-framework</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>wang-web</artifactId>
     <packaging>war</packaging>
@@ -17,6 +17,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
 
 

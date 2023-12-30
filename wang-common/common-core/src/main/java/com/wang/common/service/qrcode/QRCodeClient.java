@@ -1,6 +1,6 @@
 package com.wang.common.service.qrcode;
 
-import lombok.RequiredArgsConstructor;
+import com.wang.common.service.QRCodeProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

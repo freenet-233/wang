@@ -2,37 +2,27 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>wang-framework</artifactId>
-        <groupId>com.wang</groupId>
-        <version>1.0.0</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wang</groupId>
     <artifactId>code-generator</artifactId>
+    <version>1.0.0</version>
+    <modelVersion>4.0.0</modelVersion>
     <name>code-generator</name>
 
     <properties>
-        <mybatis-plus-join.version>1.4.4</mybatis-plus-join.version>
         <mybatis-spring.version>3.0.1</mybatis-spring.version>
+        <mysql.version>8.0.33</mysql.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-extension</artifactId>
-        </dependency>
-        <!--联表查询-->
-        <dependency>
-            <groupId>com.github.yulichang</groupId>
-            <artifactId>mybatis-plus-join</artifactId>
-            <version>${mybatis-plus-join.version}</version>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
